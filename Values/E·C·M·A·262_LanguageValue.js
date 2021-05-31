@@ -44,13 +44,20 @@ Object.defineProperties(E·C·M·A·262_LanguageValue,
 				{ configurable: true
 				, enumerable: false
 				, value: function is ( $ ) {
-					//  Returns whether the provided value is the same value as this.
+					//  Whether the provided value is the same value as this.
 					return Object.is(this, $) }
 				, writable: true }
-			, "is the prototype of":
+			, "is a prototype of":
 				{ configurable: true
 				, enumerable: false
-				, value: Object.defineProperty(function ( $ ) { return Object.prototype.isPrototypeOf.call(this, $) }, "name", { value: "is the prototype of" })
+				, value: Object.defineProperty(function ( $ ) {
+					//  Whether this is in the prototype chain of the provided value.
+					//
+					//  ☞ Note:
+					//  This will always be true for null and always be false for all other primitives.
+					return this === null ? true
+						: this === undefined ? false
+						: Object.prototype.isPrototypeOf.call(this, $) }, "name", { value: "is a prototype of" })
 				, writable: true } })
 		, writable: false }
 	, set:
