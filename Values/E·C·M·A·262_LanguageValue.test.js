@@ -6,20 +6,21 @@
 //  This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 //  If a copy of the MPL was not distributed with this file, You can obtain one at <https://mozilla.org/MPL/2.0/>.
 
-import { assert, assertEquals, assertStrictEquals } from "https://deno.land/std@0.97.0/testing/asserts.ts"
 import E·C·M·A·262_LanguageValue from "./E·C·M·A·262_LanguageValue.js"
+import { assert, assertEquals, assertStrictEquals } from "https://deno.land/std@0.97.0/testing/asserts.ts"
 
 const values =
-	{ "undefined": undefined
-	, "null": null
-	, "number": 23
-	, "string": "ƒriŋ"
-	, "object": Object.create(null)
-	, "symbol": Symbol()
-	, "bigint": 420n
-	, "function": ( ) => { }
-	, "array" : [ ]
-	, "proxy": new Proxy ({ }, { }) }
+	{ undefined: undefined
+	, null: null
+	, boolean: true
+	, string: "ƒriŋ"
+	, symbol: Symbol()
+	, number: 23
+	, bigint: 420n
+	, object: Object.create(null)
+	, function: ( ) => { }
+	, array : [ ]
+	, proxy: new Proxy ({ }, { }) }
 
 Deno.test("E·C·M·A·262_LanguageValue() returns the same value when called as a function.", ( ) => Object.values(values).forEach(value => assertStrictEquals(E·C·M·A·262_LanguageValue(value), value)))
 
