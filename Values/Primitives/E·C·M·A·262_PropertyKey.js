@@ -15,6 +15,7 @@ export default function E·C·M·A·262_PropertyKey ( argument ) {
 	//
 	//  ☞ Note
 	//  This function will always return a property key; it will throw a TypeError if conversion fails.
+	if ( new.target !== undefined ) throw new TypeError ("Property keys cannot be constructed with new.")
 	const key = E·C·M·A·262_Primitive(argument, "string")
 	return typeof key == "symbol" ? key : E·C·M·A·262_String(key) }
 

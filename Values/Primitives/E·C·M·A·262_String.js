@@ -14,6 +14,7 @@ export default function E·C·M·A·262_String ( argument ) {
 	//
 	//  ☞ Note
 	//  This function will always return a string; it will throw a TypeError if conversion fails.
+	if ( new.target !== undefined ) throw new TypeError ("Strings cannot be constructed with new.")
 	if ( typeof argument == "symbol" ) throw new TypeError (`Cannot convert symbol ${ argument } to string.`)
 	else return String(argument) }
 
