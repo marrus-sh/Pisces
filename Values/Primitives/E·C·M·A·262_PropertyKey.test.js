@@ -27,10 +27,10 @@ const values =
 	, "": [ ]
 	, "[object Object]": new Proxy ({ }, { }) }
 
-Deno.test("E·C·M·A·262_Primitive() returns a property key when called as a function.", ( ) => Object.entries(values).forEach(( [ key, value ] ) => assertStrictEquals(E·C·M·A·262_PropertyKey(value), typeof key == "symbol" ? key : String(key))))
+Deno.test(`Calling E·C·M·A·262_Primitive returns a property key.`, ( ) => Object.entries(values).forEach(( [ key, value ] ) => assertStrictEquals(E·C·M·A·262_PropertyKey(value), typeof key == "symbol" ? key : String(key))))
 
-Deno.test("E·C·M·A·262_PropertyKey() throws when called as a constructor.", ( ) => assertThrows(( ) => new E·C·M·A·262_PropertyKey))
+Deno.test(`Constructing E·C·M·A·262_PropertyKey throws.`, ( ) => assertThrows(( ) => new E·C·M·A·262_PropertyKey))
 
-Deno.test("instanceof E·C·M·A·262_PropertyKey returns true for property keys.", ( ) => [ "", Symbol() ].forEach(value => assert(value instanceof E·C·M·A·262_PropertyKey)))
+Deno.test(`instanceof E·C·M·A·262_PropertyKey returns true for property keys.`, ( ) => [ "", Symbol() ].forEach(value => assert(value instanceof E·C·M·A·262_PropertyKey)))
 
-Deno.test("instanceof E·C·M·A·262_PropertyKey returns false for others.", ( ) => [ undefined, null, true, 27, 98n, { }, [ ], ( ) => { }, new Proxy ({ }, { }) ].forEach(value => assert(!(value instanceof E·C·M·A·262_PropertyKey))))
+Deno.test(`instanceof E·C·M·A·262_PropertyKey returns false for others.`, ( ) => [ undefined, null, true, 27, 98n, { }, [ ], ( ) => { }, new Proxy ({ }, { }) ].forEach(value => assert(!(value instanceof E·C·M·A·262_PropertyKey))))

@@ -11,6 +11,7 @@ This library is broken up into multiple files, which is generally not considered
 “Stitching” the files together is left as an exercise for the user.
 It is perfectly acceptable for use with [Deno](https://deno.land); however, TypeScript definitions are not provided (as TypeScript uses different and sometimes unwieldy/incompatible abstractions to those of low‐level ECMAScript proper).
 
+
 ##  Versioning and Development
 
 ✨ fuck around and find out ✨🛹
@@ -20,6 +21,7 @@ You should not make use of it without comprehensively referencing both the ECMAS
 When you update Pisces to a newer version, you can use `git diff` to see the changes which have been made.
 
 If that sounds user‐hostile to you, consider that I wrote this library for my own purposes, and not because I want users.
+
 
 ##  License
 
