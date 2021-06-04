@@ -17,18 +17,18 @@ export default function E·C·M·A·262_Primitive ( input, hint = undefined ) {
 	if ( new.target !== undefined ) throw new TypeError ("Primitives cannot be constructed with new.")
 	else if ( hint !== "string" && hint !== "number" && hint !== undefined ) throw new TypeError (`${ hint } is not a valid hint for E·C·M·A·262_Primitive.`)
 	else if ( E·C·M·A·262_LanguageValue.get("type", input) == "object" ) {
-		const exoticToPrim = input[Symbol.toPrimitive]
+		const exoticToPrim= input[Symbol.toPrimitive]
 		if ( exoticToPrim !== undefined )
 			if ( typeof exoticToPrim != "function" ) throw new TypeError ("Cannot convert object to a primitive: @@toPrimitive is not callable.")
 			else {
-				const result = exoticToPrim.call(input, hint === undefined ? "default" : hint)
+				const result= exoticToPrim.call(input, hint === undefined ? "default" : hint)
 				if ( E·C·M·A·262_LanguageValue.get("type", result) != "object" ) return result
 				else throw new TypeError ("Attempted to convert object to a primitive but got another object.") }
 		else {
 			for ( const name of hint == "string" ? ["toString", "valueOf"] : ["valueOf", "toString"] ) {
-				const method = input[name]
+				const method= input[name]
 				if ( typeof method == "function" ) {
-					const result = method.call(input)
+					const result= method.call(input)
 					if ( E·C·M·A·262_LanguageValue.get("type", result) != "object" ) return result } }
 			throw new TypeError ("Attempted to convert object to a primitive but both .toString() and .valueOf() failed.") } }
 	else return input }

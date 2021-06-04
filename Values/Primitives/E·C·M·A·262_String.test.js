@@ -7,9 +7,9 @@
 //  If a copy of the MPL was not distributed with this file, You can obtain one at <https://mozilla.org/MPL/2.0/>.
 
 import E·C·M·A·262_String from "./E·C·M·A·262_String.js"
-import { assert, assertStrictEquals, assertThrows } from "https://deno.land/std@0.97.0/testing/asserts.ts"
+import { assert, assertStrictEquals, assertThrows } from "../../dev_deps.js"
 
-const values =
+const values=
 	{ undefined: undefined
 	, null: null
 	, true: true

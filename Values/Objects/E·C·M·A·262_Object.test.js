@@ -7,9 +7,9 @@
 //  If a copy of the MPL was not distributed with this file, You can obtain one at <https://mozilla.org/MPL/2.0/>.
 
 import E·C·M·A·262_Object from "./E·C·M·A·262_Object.js"
-import { assert, assertEquals, assertStrictEquals, assertThrows } from "https://deno.land/std@0.97.0/testing/asserts.ts"
+import { assert, assertEquals, assertStrictEquals, assertThrows } from "../../dev_deps.js"
 
-const values =
+const values=
 	{ boolean: true
 	, string: "ƒriŋ"
 	, symbol: Symbol()
@@ -20,13 +20,13 @@ const values =
 	, array : [ ]
 	, proxy: new Proxy ({ }, { }) }
 
-const symbols =
+const symbols=
 	{ enumerableSymbolAccess: Symbol("enumerable symbol access")
 	, enumerableSymbolData: Symbol("enumerable symbol data")
 	, non·enumerableSymbolAccess: Symbol("non·enumerable symbol access")
 	, non·enumerableSymbolData: Symbol("non·enumerable symbol data") }
 
-const desc =
+const desc=
 	{ enumerableNameAccess:
 		{ configurable: false
 		, enumerable: true
@@ -85,7 +85,7 @@ Deno.test(`E·C·M·A·262_Object :: Getting "is extensible" is correct.`, ( ) =
 	assert(!E·C·M·A·262_Object.get("is extensible", Object.preventExtensions({ }))) })
 
 Deno.test(`E·C·M·A·262_Object :: Setting "is extensible" is correct.`, ( ) => {
-	const obj = { }
+	const obj= { }
 	E·C·M·A·262_Object.set("is extensible", true, obj)
 	assert(Object.isExtensible(obj))
 	E·C·M·A·262_Object.set("is extensible", false, obj)
@@ -97,7 +97,7 @@ Deno.test(`E·C·M·A·262_Object :: Getting "is frozen" is correct.`, ( ) => {
 	assert(E·C·M·A·262_Object.get("is frozen", Object.freeze({ }))) })
 
 Deno.test(`E·C·M·A·262_Object :: Setting "is frozen" is correct.`, ( ) => {
-	const obj = { }
+	const obj= { }
 	E·C·M·A·262_Object.set("is frozen", false, obj)
 	assert(!Object.isFrozen(obj))
 	E·C·M·A·262_Object.set("is frozen", true, obj)
@@ -109,7 +109,7 @@ Deno.test(`E·C·M·A·262_Object :: Getting "is sealed" is correct.`, ( ) => {
 	assert(E·C·M·A·262_Object.get("is sealed", Object.seal({ }))) })
 
 Deno.test(`E·C·M·A·262_Object :: Setting "is sealed" is correct.`, ( ) => {
-	const obj = { }
+	const obj= { }
 	E·C·M·A·262_Object.set("is sealed", false, obj)
 	assert(!Object.isSealed(obj))
 	E·C·M·A·262_Object.set("is sealed", true, obj)
@@ -139,7 +139,7 @@ Deno.test(`E·C·M·A·262_Object :: Getting "prototype" is correct.`, ( ) => {
 	assertThrows(( ) => E·C·M·A·262_Object.get("prototype", 1)) })
 
 Deno.test(`E·C·M·A·262_Object :: Setting "prototype" is correct.`, ( ) => {
-	const obj = { }
+	const obj= { }
 	E·C·M·A·262_Object.set("prototype", Number.prototype, obj)
 	assertStrictEquals(Object.getPrototypeOf(obj), Number.prototype)
 	E·C·M·A·262_Object.set("prototype", null, obj)

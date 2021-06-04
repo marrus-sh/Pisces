@@ -38,7 +38,7 @@ Object.defineProperties(E·C·M·A·262_LanguageValue,
 					//  See ‹ https://tc39.es/ecma262/#sec-ecmascript-data-types-and-values ›.
 					if ( this === null ) return "null"
 					else {
-						const type = typeof this
+						const type= typeof this
 						return type == "function" ? "object" : type } }, "name", { value: "get type" }) }
 			, is:
 				{ configurable: true

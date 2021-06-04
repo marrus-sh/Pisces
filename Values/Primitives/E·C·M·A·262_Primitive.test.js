@@ -7,9 +7,9 @@
 //  If a copy of the MPL was not distributed with this file, You can obtain one at <https://mozilla.org/MPL/2.0/>.
 
 import E·C·M·A·262_Primitive from "./E·C·M·A·262_Primitive.js"
-import { assert, assertStrictEquals, assertThrows } from "https://deno.land/std@0.97.0/testing/asserts.ts"
+import { assert, assertStrictEquals, assertThrows } from "../../dev_deps.js"
 
-const primitives =
+const primitives=
 	{ "undefined": undefined
 	, "null": null
 	, "boolean": true
@@ -18,28 +18,28 @@ const primitives =
 	, "number": 23
 	, "bigint": 420n }
 
-const object =
+const object=
 	{ toString ( ) { return "string" }
 	, valueOf ( ) { return "value" } }
 
-const stringy =
+const stringy=
 	{ toString ( ) { return true }
 	, valueOf ( ) { return Object(false) } }
 
-const valuey =
+const valuey=
 	{ toString ( ) { return Object("bad") }
 	, valueOf ( ) { return "good" } }
 
-const overwritten =
+const overwritten=
 	{ toString ( ) { return "string" }
 	, valueOf ( ) { return "value" }
 	, [Symbol.toPrimitive] ( $ ) { return $ } }
 
-const bad =
+const bad=
 	{ toString ( ) { return Object("bad") }
 	, valueOf ( ) { return Object(false) } }
 
-const badOverwrite =
+const badOverwrite=
 	{ toString ( ) { return "string" }
 	, valueOf ( ) { return "value" }
 	, [Symbol.toPrimitive] ( $ ) { return Object($) } }
