@@ -1,4 +1,4 @@
-//  @ Pisces :: Values :: E·C·M·A·262_LanguageValue.js
+//  @ Piscēs :: Values :: E·C·M·A·262_LanguageValue.js
 //
 //  Copyright © 2020–2021 Margaret KIBI (kibigo!).
 //

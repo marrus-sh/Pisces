@@ -1,11 +1,12 @@
 #!/usr/bin/env -S deno test
-//  @ Pisces :: Values :: Objects :: E·C·M·A·262_Object.test.js
+//  @ Piscēs :: Values :: Objects :: E·C·M·A·262_Object.test.js
 //
 //  Copyright © 2020–2021 Margaret KIBI (kibigo!).
 //
 //  This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0.
 //  If a copy of the MPL was not distributed with this file, You can obtain one at <https://mozilla.org/MPL/2.0/>.
 
+import E·C·M·A·262_LanguageValue from "../E·C·M·A·262_LanguageValue.js"
 import E·C·M·A·262_Object from "./E·C·M·A·262_Object.js"
 import { assert, assertEquals, assertStrictEquals, assertThrows } from "../../dev_deps.js"
 
@@ -71,7 +72,7 @@ const desc=
 Deno.test(`Calling E·C·M·A·262_Object throws.`, ( ) => assertThrows(( ) => E·C·M·A·262_Object({ })))
 
 Deno.test(`Constructing E·C·M·A·262_Object returns an object when passed a non‐nullish value.`, ( ) => Object.values(values).forEach(value => {
-		assertEquals(E·C·M·A·262_Object.get("type", new E·C·M·A·262_Object (value)), "object")
+		assertEquals(E·C·M·A·262_LanguageValue.get("type", new E·C·M·A·262_Object (value)), "object")
 		assertStrictEquals(typeof new E·C·M·A·262_Object (value), typeof Object(value))
 		assertEquals((new E·C·M·A·262_Object (value)).valueOf?.(), Object(value).valueOf?.())
 		assertStrictEquals(Object.getPrototypeOf(new E·C·M·A·262_Object (value)), Object.getPrototypeOf(Object(value))) }))

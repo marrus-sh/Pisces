@@ -1,4 +1,4 @@
-//  @ Pisces :: mod.js
+//  @ Piscēs :: mod.js
 //
 //  Copyright © 2020–2021 Margaret KIBI (kibigo!).
 //

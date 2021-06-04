@@ -1,4 +1,4 @@
-//  @ Pisces :: Values :: Primitives :: E·C·M·A·262_PropertyKey.js
+//  @ Piscēs :: Values :: Primitives :: E·C·M·A·262_PropertyKey.js
 //
 //  Copyright © 2020–2021 Margaret KIBI (kibigo!).
 //

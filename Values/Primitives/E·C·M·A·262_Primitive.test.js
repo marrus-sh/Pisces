@@ -1,5 +1,5 @@
 #!/usr/bin/env -S deno test
-//  @ Pisces :: Values :: Primitives :: E·C·M·A·262_Primitive.test.js
+//  @ Piscēs :: Values :: Primitives :: E·C·M·A·262_Primitive.test.js
 //
 //  Copyright © 2020–2021 Margaret KIBI (kibigo!).
 //

@@ -1,5 +1,5 @@
 #!/usr/bin/env -S deno test
-//  @ Pisces :: Values :: E·C·M·A·262_LanguageValue.test.js
+//  @ Piscēs :: Values :: E·C·M·A·262_LanguageValue.test.js
 //
 //  Copyright © 2020–2021 Margaret KIBI (kibigo!).
 //

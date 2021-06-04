@@ -1,4 +1,4 @@
-//  @ Pisces :: Values :: Objects :: E·C·M·A·262_Object.js
+//  @ Piscēs :: Values :: Objects :: E·C·M·A·262_Object.js
 //
 //  Copyright © 2020–2021 Margaret KIBI (kibigo!).
 //
