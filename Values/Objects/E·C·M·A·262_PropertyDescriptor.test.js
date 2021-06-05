@@ -8,59 +8,11 @@
 
 import E·C·M·A·262_LanguageValue from "../E·C·M·A·262_LanguageValue.js"
 import E·C·M·A·262_PropertyDescriptor from "./E·C·M·A·262_PropertyDescriptor.js"
-import { assert, assertEquals, assertStrictEquals, assertThrows } from "../../dev_deps.js"
-
-const symbols=
-	{ enumerableSymbolAccess: Symbol("enumerable symbol access")
-	, enumerableSymbolData: Symbol("enumerable symbol data")
-	, non·enumerableSymbolAccess: Symbol("non·enumerable symbol access")
-	, non·enumerableSymbolData: Symbol("non·enumerable symbol data") }
-
-const desc=
-	{ enumerableNameAccess:
-		{ configurable: false
-		, enumerable: true
-		, get ( ) { return "enumerable name access" }
-		, set: undefined }
-	, enumerableNameData:
-		{ configurable: false
-		, enumerable: true
-		, value: "enumerable name data"
-		, writable: false }
-	, [symbols.enumerableSymbolAccess]:
-		{ configurable: false
-		, enumerable: true
-		, get ( ) { return "enumerable symbol access" }
-		, set: undefined }
-	, [symbols.enumerableSymbolData]:
-		{ configurable: false
-		, enumerable: true
-		, value: "enumerable symbol data"
-		, writable: false }
-	, non·enumerableNameAccess:
-		{ configurable: false
-		, enumerable: false
-		, get ( ) { return "non·enumerable name access" }
-		, set: undefined }
-	, non·enumerableNameData:
-		{ configurable: false
-		, enumerable: false
-		, value: "non·enumerable name data"
-		, writable: false }
-	, [symbols.non·enumerableSymbolAccess]:
-		{ configurable: false
-		, enumerable: false
-		, get ( ) { return "non·enumerable symbol access" }
-		, set: undefined }
-	, [symbols.non·enumerableSymbolData]:
-		{ configurable: false
-		, enumerable: false
-		, value: "non·enumerable symbol data"
-		, writable: false } }
+import { assert, assertStrictEquals, assertThrows } from "../../dev_deps.js"
 
 Deno.test(`Calling E·C·M·A·262_PropertyDescriptor throws.`, ( ) => assertThrows(( ) => E·C·M·A·262_PropertyDescriptor({ })))
 
-Deno.test(`Constructing E·C·M·A·262_PropertyDescriptor returns an object when passed a property descriptor value.`, ( ) => assertEquals(E·C·M·A·262_LanguageValue.get("type", new E·C·M·A·262_PropertyDescriptor ({ })), "object"))
+Deno.test(`Constructing E·C·M·A·262_PropertyDescriptor returns an object when passed a property descriptor value.`, ( ) => assertStrictEquals(E·C·M·A·262_LanguageValue.get("type", new E·C·M·A·262_PropertyDescriptor ({ })), "object"))
 
 Deno.test(`Constructing E·C·M·A·262_PropertyDescriptor does not set descriptor properties not present on the passed object.`, ( ) => {
 	const obj= new E·C·M·A·262_PropertyDescriptor ({ })
@@ -98,7 +50,7 @@ Deno.test(`Constructing E·C·M·A·262_PropertyDescriptor throws when passed a 
 	assertThrows(( ) => new E·C·M·A·262_PropertyDescriptor (undefined))
 	assertThrows(( ) => new E·C·M·A·262_PropertyDescriptor (null)) })
 
-Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "completed" returns an object when passed a property descriptor value.`, ( ) => assertEquals(E·C·M·A·262_LanguageValue.get("type", E·C·M·A·262_PropertyDescriptor.get("completed", { })), "object"))
+Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "completed" returns an object when passed a property descriptor value.`, ( ) => assertStrictEquals(E·C·M·A·262_LanguageValue.get("type", E·C·M·A·262_PropertyDescriptor.get("completed", { })), "object"))
 
 Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "completed" sets descriptor properties not present on the passed object.`, ( ) => {
 	let obj= E·C·M·A·262_PropertyDescriptor.get("completed", { })
@@ -145,11 +97,12 @@ Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "completed" throws when
 
 Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "getter" works.`, ( ) => {
 	const fn= ( ) => { }
+	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("getter", undefined), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("getter", { }), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("getter", Object.create({ get: fn })), fn)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("getter", Object.create({ get: fn }, { get: { value: undefined } })), undefined)
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("getter", { get: null }))
-	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("getter", undefined))
+	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("getter", null))
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("getter", 2)) })
 
 Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "is accessor descriptor" works.`, ( ) => {
@@ -160,10 +113,11 @@ Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "is accessor descriptor
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is accessor descriptor", 2)) })
 
 Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "is configurable" works.`, ( ) => {
+	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is configurable", undefined), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is configurable", { }), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is configurable", Object.create({ configurable: { } })), true)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is configurable", Object.create({ configurable: { } }, { configurable: { value: undefined } })), false)
-	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is configurable", undefined))
+	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is configurable", null))
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is configurable", 2)) })
 
 Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "is data descriptor" works.`, ( ) => {
@@ -174,10 +128,11 @@ Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "is data descriptor" wo
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is data descriptor", 2)) })
 
 Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "is enumerable" works.`, ( ) => {
+	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is enumerable", undefined), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is enumerable", { }), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is enumerable", Object.create({ enumerable: { } })), true)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is enumerable", Object.create({ enumerable: { } }, { enumerable: { value: undefined } })), false)
-	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is enumerable", undefined))
+	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is enumerable", null))
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is enumerable", 2)) })
 
 Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "is generic descriptor" works.`, ( ) => {
@@ -189,26 +144,29 @@ Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "is generic descriptor"
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is generic descriptor", 2)) })
 
 Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "is writable" works.`, ( ) => {
+	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is writable", undefined), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is writable", { }), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is writable", Object.create({ writable: { } })), true)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("is writable", Object.create({ writable: { } }, { writable: { value: undefined } })), false)
-	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is writable", undefined))
+	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is writable", null))
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("is writable", 2)) })
 
 Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "setter" works.`, ( ) => {
 	const fn= ( ) => { }
+	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("setter", undefined), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("setter", { }), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("setter", Object.create({ set: fn })), fn)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("setter", Object.create({ set: fn }, { set: { value: undefined } })), undefined)
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("setter", { set: null }))
-	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("setter", undefined))
+	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("setter", null))
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("setter", 2)) })
 
 Deno.test(`E·C·M·A·262_PropertyDescriptor :: Getting "value" works.`, ( ) => {
+	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("value", undefined), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("value", { }), undefined)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("value", Object.create({ value: null })), null)
 	assertStrictEquals(E·C·M·A·262_PropertyDescriptor.get("value", Object.create({ value: null }, { value: { value: undefined } })), undefined)
-	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("value", undefined))
+	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("value", null))
 	assertThrows(( ) => E·C·M·A·262_PropertyDescriptor.get("value", 2)) })
 
 Deno.test(`instanceof E·C·M·A·262_PropertyDescriptor returns true for most objects.`, ( ) => [ { }, [ ], ( ) => { }, new Proxy ({ }, { }) ].forEach(value => assert(value instanceof E·C·M·A·262_PropertyDescriptor)))

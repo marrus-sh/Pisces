@@ -131,6 +131,14 @@ Deno.test(`E·C·M·A·262_Object :: Getting "own names" returns keys of own nam
 
 Deno.test(`E·C·M·A·262_Object :: Getting "own property descriptors" returns property descriptors of own properties.`, ( ) => assertEquals(E·C·M·A·262_Object.get("own property descriptors", Object.create({ foo: "bar" }, desc)), desc))
 
+Deno.test(`E·C·M·A·262_Object :: Setting "own property descriptors" defines own properties.`, ( ) => {
+	const obj= Object.create(null)
+	E·C·M·A·262_Object.set("own property descriptors", desc, obj)
+	assertEquals(obj, Object.create(null, desc))
+	E·C·M·A·262_Object.set("own property descriptors", { }, obj)
+	assertEquals(obj, Object.create(null, desc))
+	assertThrows(( ) => E·C·M·A·262_Object.set("own property descriptors", { enumerableNameData: { value: "wrong" } }, obj)) })
+
 Deno.test(`E·C·M·A·262_Object :: Getting "own symbols" returns keys of own symbolic properties.`, ( ) => assertEquals(new Set (E·C·M·A·262_Object.get("own symbols", Object.create({ foo: "bar" }, desc))), new Set ([ symbols.enumerableSymbolAccess, symbols.enumerableSymbolData, symbols.non·enumerableSymbolAccess, symbols.non·enumerableSymbolData ])))
 
 Deno.test(`E·C·M·A·262_Object :: Getting "prototype" is correct.`, ( ) => {

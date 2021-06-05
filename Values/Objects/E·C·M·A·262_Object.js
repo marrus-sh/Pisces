@@ -38,7 +38,9 @@ export default class E·C·M·A·262_Object extends E·C·M·A·262_LanguageValu
 		if ( E·C·M·A·262_LanguageValue.get("type", this) != "object" ) throw new TypeError ("Can’t set the sealedness of a primitive.")
 		else if ( !$ && Object.isSealed(this) ) throw new TypeError ("Can’t make sealed object unsealed.")
 		else if ( $ ) Object.seal(this) }
-	get "live property descriptors" ( ) { throw new TypeError ("Live property descriptor support requires E·C·M·A·262_PropertyDescriptor.") }
+	get "live property descriptors" ( ) {
+		if ( E·C·M·A·262_LanguageValue.get("type", this) != "object" ) throw new TypeError ("Can’t get property descriptors for a primitive.")
+		else return new Proxy ({ }, new LivePropertyDescriptorsProxyHandler (this)) }
 	get "own entries" ( ) {
 		if ( E·C·M·A·262_LanguageValue.get("type", this) != "object" ) throw new TypeError ("Can’t get the own entries of a primitive.")
 		else return Object.entries(this) }
@@ -57,6 +59,9 @@ export default class E·C·M·A·262_Object extends E·C·M·A·262_LanguageValu
 	get "own property descriptors" ( ) {
 		if ( E·C·M·A·262_LanguageValue.get("type", this) != "object" ) throw new TypeError ("Can’t get the own property descriptors of a primitive.")
 		else return Object.getOwnPropertyDescriptors(this) }
+	set "own property descriptors" ( $ ) {
+		if ( E·C·M·A·262_LanguageValue.get("type", this) != "object" ) throw new TypeError ("Can’t set the own property descriptors of a primitive.")
+		else return Object.defineProperties(this, $) }
 	get "own symbols" ( ) {
 		if ( E·C·M·A·262_LanguageValue.get("type", this) != "object" ) throw new TypeError ("Can’t get the own symbols of a primitive.")
 		else return Object.getOwnPropertySymbols(this) }
