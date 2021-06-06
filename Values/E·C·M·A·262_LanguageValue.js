@@ -53,7 +53,7 @@ Object.defineProperties(E·C·M·A·262_LanguageValue,
 				, value: Object.defineProperty(function ( $ ) {
 					//  Whether this is in the prototype chain of the provided value.
 					//
-					//  ☞ Note:
+					//  ☞ Note
 					//  This will always be true for null and always be false for all other primitives.
 					return this === null ? true
 						: this === undefined ? false
