@@ -6,6 +6,7 @@
 //  If a copy of the MPL was not distributed with this file, You can obtain one at <https://mozilla.org/MPL/2.0/>.
 
 export { default as E·C·M·A·262_Primitive } from "./E·C·M·A·262_Primitive.js"
+export { default as E·C·M·A·262_Numeric } from "./E·C·M·A·262_Numeric.js"
 export { default as E·C·M·A·262_PropertyKey } from "./E·C·M·A·262_PropertyKey.js"
 export { default as E·C·M·A·262_String } from "./E·C·M·A·262_String.js"
 export { default as R·F·C·4648_Base64 } from "./R·F·C·4648_Base64.js"
